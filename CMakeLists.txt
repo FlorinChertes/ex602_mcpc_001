@@ -4,10 +4,20 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 # project name and language
 project(unit_test_01 LANGUAGES CXX)
 
-# require C++11
-set(CMAKE_CXX_STANDARD 11)
+# require C++14
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+IF (MSVC) 
+	# Activate C++ exception handling 
+	IF (NOT CMAKE_CXX_FLAGS MATCHES "/EHsc") 
+		SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc") 
+	ENDIF ()
+ELSE ()
+	SET(GCC_STD_CPP_14_COMPILE_FLAGS "-std=c++14")
+	SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_STD_CPP_14S_COMPILE_FLAGS}")
+ENDIF () 
 
 # functions library
 add_library(functions_lib
