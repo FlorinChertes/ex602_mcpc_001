@@ -2,6 +2,7 @@
 
 #include "gtest/gtest.h"
 
+#include<numeric>
 #include <vector>
 
 int main(int argc, char **argv) 
@@ -44,3 +45,24 @@ TEST(example, use_lambda_003)
 	ASSERT_EQ(positives, 3);
 }
 
+TEST(example, use_lambda_004)
+{
+	auto integers = std::vector<int>{ 1, -2, 3, -4, 5 };
+
+	auto lsum = [](auto const s, auto const n) { return s + n; };
+
+	auto sum = std::accumulate(std::begin(integers), std::end(integers), 0, lsum);
+
+	ASSERT_EQ(sum, 3);
+}
+
+TEST(example, use_lambda_005)
+{
+	auto test_elements = std::vector<std::string>{ "hello", " ", "world", "!"};
+
+	auto lsum = [](auto const s, auto const n) { return s + n; };
+
+	auto sum = std::accumulate(std::begin(test_elements), std::end(test_elements), std::string(), lsum);
+
+	ASSERT_EQ(sum, std::string("hello world!"));
+}
