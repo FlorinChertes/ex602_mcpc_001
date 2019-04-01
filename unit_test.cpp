@@ -64,5 +64,15 @@ TEST(example, use_lambda_005)
 
 	auto sum = std::accumulate(std::begin(test_elements), std::end(test_elements), std::string(), lsum);
 
+	int a = 1;
+	int b = 2;
+
+
+	if (a = 1)
+	{
+		b = 3;
+	}
+	ASSERT_EQ(b, 3);
+
 	ASSERT_EQ(sum, std::string("hello world!"));
 }

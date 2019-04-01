@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 IF (MSVC) 
 	# Activate C++ exception handling 
 	IF (NOT CMAKE_CXX_FLAGS MATCHES "/EHsc") 
-		SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc") 
+		SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
 	ENDIF ()
 ELSE ()
 	SET(GCC_STD_CPP_14_COMPILE_FLAGS "-std=c++14")
@@ -36,7 +36,16 @@ target_include_directories(google_test_001 SYSTEM
 target_include_directories(google_test_001 SYSTEM
   PUBLIC ../../googletest-release-1.8.0/googletest)
 
-  
+IF (MSVC)
+	# Silence std::tr1 warning on MSVC  if(MSVC)
+	foreach(_tgt google_test_001 )
+		target_compile_definitions(${_tgt}
+			PRIVATE
+				"_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING"
+		)
+	endforeach()
+ENDIF ()
+
 # main code
 add_executable(test_prg
     main_test.cpp
@@ -58,6 +67,16 @@ target_link_libraries(unit_test
     functions_lib
     google_test_001
 )
+
+	# Silence std::tr1 warning on MSVC  if(MSVC)
+	foreach(_tgt unit_test )
+		target_compile_definitions(${_tgt}
+			PRIVATE
+				"_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING"
+		)
+	endforeach()
+
+
 ELSE ()
 target_link_libraries(unit_test 
    PRIVATE
