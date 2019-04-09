@@ -64,15 +64,19 @@ TEST(example, use_lambda_005)
 
 	auto sum = std::accumulate(std::begin(test_elements), std::end(test_elements), std::string(), lsum);
 
-	int a = 1;
-	int b = 2;
-
-
-	if (a = 1)
-	{
-		b = 3;
-	}
-	ASSERT_EQ(b, 3);
-
 	ASSERT_EQ(sum, std::string("hello world!"));
+}
+
+
+TEST(example, use_func_var_arg_006)
+{
+	auto s1 = add(1, 2, 3, 4, 5);
+	ASSERT_EQ(s1, 15);
+
+	auto s2 = add(	std::string("hello"), 
+					std::string(" "), 
+					std::string("world"), 
+					std::string("!"));
+
+	ASSERT_EQ(s2, std::string("hello world!"));
 }
