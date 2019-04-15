@@ -100,4 +100,4 @@ TEST(example, use_fold_expr_overloads_009)
 	auto m = min(2, 3, 4, 5, 6);
 	ASSERT_EQ(m, 2);
 }
-*/
+//*/
