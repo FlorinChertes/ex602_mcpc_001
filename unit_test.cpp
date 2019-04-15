@@ -80,3 +80,24 @@ TEST(example, use_func_var_arg_006)
 
 	ASSERT_EQ(s2, std::string("hello world!"));
 }
+
+TEST(example, use_even_tuple_007)
+{
+	auto t_1 = make_even_tuple(1,2,3,4);
+	std::tuple<int, int, int, int> t_2 = std::make_tuple(1, 2, 3, 4);
+	ASSERT_EQ(t_1, t_2);
+}
+
+/*
+TEST(example, use_fold_expr_008)
+{
+	auto sum = add_to_one_function(2, 3, 4, 5, 6);
+	ASSERT_EQ(sum, 21);
+}
+
+TEST(example, use_fold_expr_overloads_009)
+{
+	auto m = min(2, 3, 4, 5, 6);
+	ASSERT_EQ(m, 2);
+}
+*/
