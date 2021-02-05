@@ -25,7 +25,6 @@ auto make_even_tuple(T... a)
 	return t;
 }
 
-/*
 template <typename ... T>
 int add_to_one_function(T ... args)
 {
@@ -45,7 +44,7 @@ constexpr auto operator< (wrapper<T> const& lhs,
 	wrapper<T> const& rhs)
 {
 	return wrapper<T>
-	{lhs.value < rhd.value ? lhs.value : rhs.value};
+	{lhs.value < rhs.value ? lhs.value : rhs.value};
 }
 
 template <typename ... T>
@@ -53,5 +52,4 @@ constexpr auto min(T&& ... args)
 {
 	return (wrapper<T>{args} < ...).value;
 }
-//*/
 

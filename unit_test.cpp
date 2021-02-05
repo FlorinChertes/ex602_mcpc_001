@@ -88,7 +88,6 @@ TEST(example, use_even_tuple_007)
 	ASSERT_EQ(t_1, t_2);
 }
 
-/*
 TEST(example, use_fold_expr_008)
 {
 	auto sum = add_to_one_function(2, 3, 4, 5, 6);
@@ -100,4 +99,3 @@ TEST(example, use_fold_expr_overloads_009)
 	auto m = min(2, 3, 4, 5, 6);
 	ASSERT_EQ(m, 2);
 }
-//*/
