@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 # project name and language
 project(unit_test_01 LANGUAGES CXX)
 
-# require C++17
-set(CMAKE_CXX_STANDARD 17)
+# require C++20
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -15,8 +15,7 @@ IF (MSVC)
 		SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
 	ENDIF ()
 ELSE ()
-	SET(GCC_STD_CPP_17_COMPILE_FLAGS "-std=c++17")
-	SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_STD_CPP_17_COMPILE_FLAGS}")
+
 ENDIF () 
 
 # functions library
@@ -59,11 +58,13 @@ IF (MSVC)
 	endforeach()
 ENDIF ()
 
+
 # main code
 add_executable(test_prg
     main_test.cpp
 )
 target_link_libraries(test_prg functions_lib)
+
 
 # testing binary
 add_executable(unit_test
